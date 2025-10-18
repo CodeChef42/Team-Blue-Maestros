@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CrisisGuard — Local Agent Monitor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main-layout">
+      <h3>Live Metrics</h3>
+      <div class="metric">
+        <span>CPU Usage:</span>
+        <div class="bar"><div id="cpuBar" class="bar-fill"></div></div>
+        <span id="cpuValue">0%</span>
+      </div>
+
+      <div class="metric">
+        <span>Disk I/O:</span>
+        <div class="bar"><div id="diskBar" class="bar-fill"></div></div>
+        <span id="diskValue">0 MB/s</span>
+      </div>
+
+      <div class="metric">
+        <span>Confidence:</span>
+        <div class="bar"><div id="confBar" class="bar-fill"></div></div>
+        <span id="confValue">0%</span>
+      </div>
+
+      <div id="alertArea"></div>
+      <div class="left-panel">
+        <h2>CrisisGuard</h2>
+        <p>Set local detection thresholds</p>
+
+        <form id="ratesForm">
+          <label
+            >Files modified threshold:
+            <input
+              type="number"
+              id="FILES_MODIFIED_THRESHOLD"
+              min="1"
+              value="20"
+            />
+          </label>
+
+          <label
+            >Time window (seconds):
+            <input type="number" id="TIME_WINDOW_SECONDS" min="5" value="30" />
+          </label>
+
+          <label
+            >Bytes written threshold (bytes):
+            <input
+              type="number"
+              id="BYTES_WRITTEN_THRESHOLD"
+              min="0"
+              value="100000000"
+            />
+          </label>
+
+          <label
+            >Rename threshold:
+            <input type="number" id="RENAMES_THRESHOLD" min="1" value="10" />
+          </label>
+
+          <label
+            >Entropy threshold:
+            <input
+              type="number"
+              id="ENTROPY_THRESHOLD"
+              step="0.1"
+              value="7.5"
+            />
+          </label>
+
+          <button type="submit">Send rates</button>
+        </form>
+
+        <div id="statusArea">
+          <button id="refreshStatus">Refresh Status</button>
+          <pre id="statusJson">Status will appear here</pre>
+        </div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
