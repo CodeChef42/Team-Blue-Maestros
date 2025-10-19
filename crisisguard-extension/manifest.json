@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "CrisisGuard Local Monitor",
+  "description": "Cross-platform ransomware detection interface for the local AI agent.",
+  "version": "1.0.0",
+  "icons": {
+    "48": "./public/icons/10961311 (1).png",
+    "128": "./public/icons/10961311.png"
+  },
+  "permissions": ["storage", "notifications"],
+  "host_permissions": ["http://127.0.0.1/*", "http://localhost/*"],
+  "action": {
+    "default_popup": "dist/src/popup/index.html",
+    "default_title": "CrisisGuard"
+  },
+  "background": {
+    "service_worker": "background/background.js"
+  }
+}

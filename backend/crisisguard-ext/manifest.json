@@ -12,6 +12,12 @@
     "default_title": "CrisisGuard"
   },
   "permissions": ["storage", "notifications", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
   "host_permissions": ["http://127.0.0.1/*", "http://localhost/*"],
   "background": {
     "service_worker": "background.js"

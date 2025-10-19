@@ -204,6 +204,13 @@ ransom_note_patterns = ("README", "HOW_TO_DECRYPT", "RECOVER", "README_FOR_DECRY
 proc_writes = defaultdict(lambda: deque())
 ml_model = None
 
+# System metrics tracking
+last_disk_counters = psutil.disk_io_counters()
+last_disk_time = time.time()
+disk_io_rate_mb_s = 0.0
+cpu_usage_percent = 0.0
+
+
 # -------------------------
 # Filesystem event handler
 # -------------------------
@@ -349,6 +356,27 @@ def detect_ml_score():
         sc = min(1.0, -score_raw / 10.0)
     return sc
 
+def update_system_metrics():
+    """Compute current CPU usage and disk write/read MB/s."""
+    global last_disk_counters, last_disk_time, disk_io_rate_mb_s, cpu_usage_percent
+
+    # CPU usage (instantaneous)
+    cpu_usage_percent = psutil.cpu_percent(interval=0.1)
+
+    # Disk I/O (delta since last)
+    try:
+        current = psutil.disk_io_counters()
+        now = time.time()
+        delta_time = now - last_disk_time
+        if delta_time > 0:
+            delta_bytes = (current.read_bytes - last_disk_counters.read_bytes) + \
+                          (current.write_bytes - last_disk_counters.write_bytes)
+            disk_io_rate_mb_s = delta_bytes / (1024 * 1024 * delta_time)
+        last_disk_counters = current
+        last_disk_time = now
+    except Exception:
+        disk_io_rate_mb_s = 0.0
+
 def compute_confidence():
     detectors = {
         "file_rate": detect_file_rate_score(),
@@ -470,8 +498,15 @@ async def set_rates(request: Request):
 
 @app.get("/status")
 async def status():
+    update_system_metrics()
     confidence, detectors = compute_confidence()
-    return {"confidence": confidence, "detectors": detectors, "runtime_config": runtime_config}
+    return {
+        "confidence": confidence,
+        "detectors": detectors,
+        "cpu_usage": cpu_usage_percent,
+        "disk_io_mb": disk_io_rate_mb_s,
+        "runtime_config": runtime_config,
+    }
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
@@ -500,6 +535,7 @@ def agent_loop(stop_event):
 
     try:
         while not stop_event.is_set():
+            update_system_metrics()
             confidence, detectors = compute_confidence()
             if confidence >= runtime_config["CONFIDENCE_ACTION_THRESHOLD"]:
                 logging.error(f"CONFIDENCE {confidence:.2f} >= ACTION threshold")

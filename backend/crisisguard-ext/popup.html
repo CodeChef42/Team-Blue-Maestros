@@ -1,87 +1,97 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>CrisisGuard — Local Agent Monitor</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="main-layout">
-      <h3>Live Metrics</h3>
-      <div class="metric">
-        <span>CPU Usage:</span>
-        <div class="bar"><div id="cpuBar" class="bar-fill"></div></div>
-        <span id="cpuValue">0%</span>
-      </div>
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8" />
+      <title>CrisisGuard — Local Agent Monitor</title>
+      <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+      <div class="main-layout">
+        <!-- Left Section -->
+        <div class="left-panel">
+          <h2>CrisisGuard</h2>
+          <p>Set local detection thresholds</p>
 
-      <div class="metric">
-        <span>Disk I/O:</span>
-        <div class="bar"><div id="diskBar" class="bar-fill"></div></div>
-        <span id="diskValue">0 MB/s</span>
-      </div>
+          <form id="ratesForm" class="form-grid">
+            <div class="form-row">
+              <label for="FILES_MODIFIED_THRESHOLD"
+                >Files modified threshold</label
+              >
+              <input
+                type="number"
+                id="FILES_MODIFIED_THRESHOLD"
+                min="1"
+                value="20"
+              />
+            </div>
 
-      <div class="metric">
-        <span>Confidence:</span>
-        <div class="bar"><div id="confBar" class="bar-fill"></div></div>
-        <span id="confValue">0%</span>
-      </div>
+            <div class="form-row">
+              <label for="TIME_WINDOW_SECONDS">Time window (seconds)</label>
+              <input type="number" id="TIME_WINDOW_SECONDS" min="5" value="30" />
+            </div>
 
-      <div id="alertArea"></div>
-      <div class="left-panel">
-        <h2>CrisisGuard</h2>
-        <p>Set local detection thresholds</p>
+            <div class="form-row">
+              <label for="BYTES_WRITTEN_THRESHOLD"
+                >Bytes written threshold (bytes)</label
+              >
+              <input
+                type="number"
+                id="BYTES_WRITTEN_THRESHOLD"
+                min="0"
+                value="100000000"
+              />
+            </div>
 
-        <form id="ratesForm">
-          <label
-            >Files modified threshold:
-            <input
-              type="number"
-              id="FILES_MODIFIED_THRESHOLD"
-              min="1"
-              value="20"
-            />
-          </label>
+            <div class="form-row">
+              <label for="RENAMES_THRESHOLD">Rename threshold</label>
+              <input type="number" id="RENAMES_THRESHOLD" min="1" value="10" />
+            </div>
 
-          <label
-            >Time window (seconds):
-            <input type="number" id="TIME_WINDOW_SECONDS" min="5" value="30" />
-          </label>
+            <div class="form-row">
+              <label for="ENTROPY_THRESHOLD">Entropy threshold</label>
+              <input
+                type="number"
+                id="ENTROPY_THRESHOLD"
+                step="0.1"
+                value="7.5"
+              />
+            </div>
 
-          <label
-            >Bytes written threshold (bytes):
-            <input
-              type="number"
-              id="BYTES_WRITTEN_THRESHOLD"
-              min="0"
-              value="100000000"
-            />
-          </label>
+            <button type="submit">Send rates</button>
+          </form>
 
-          <label
-            >Rename threshold:
-            <input type="number" id="RENAMES_THRESHOLD" min="1" value="10" />
-          </label>
+          <div id="statusArea">
+            <button id="refreshStatus">Refresh Status</button>
+            <pre id="statusJson">Status will appear here</pre>
+          </div>
+        </div>
 
-          <label
-            >Entropy threshold:
-            <input
-              type="number"
-              id="ENTROPY_THRESHOLD"
-              step="0.1"
-              value="7.5"
-            />
-          </label>
+        <!-- Right Section -->
+        <div class="right-panel">
+          <h3>Live Metrics</h3>
 
-          <button type="submit">Send rates</button>
-        </form>
+          <div class="metric">
+            <span class="metric-label">CPU Usage</span>
+            <div class="bar"><div id="cpuBar" class="bar-fill"></div></div>
+            <span id="cpuValue" class="metric-value">0%</span>
+          </div>
 
-        <div id="statusArea">
-          <button id="refreshStatus">Refresh Status</button>
-          <pre id="statusJson">Status will appear here</pre>
+          <div class="metric">
+            <span class="metric-label">Disk I/O</span>
+            <div class="bar"><div id="diskBar" class="bar-fill"></div></div>
+            <span id="diskValue" class="metric-value">0 MB/s</span>
+          </div>
+
+          <div class="metric">
+            <span class="metric-label">Confidence</span>
+            <div class="bar"><div id="confBar" class="bar-fill"></div></div>
+            <span id="confValue" class="metric-value">0%</span>
+          </div>
+
+          <div id="alertArea"></div>
         </div>
       </div>
-    </div>
 
-    <script src="popup.js"></script>
-  </body>
-</html>
+      <script src="popup.js"></script>
+    </body>
+  </html>

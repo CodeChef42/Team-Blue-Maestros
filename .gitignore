@@ -1,0 +1,5 @@
+.venv
+backend/MALWARE_DETECTION_RF_MODEL_3DS.joblib
+backend/__pycache__
+crisisguard-extension
+backend/ML Models
