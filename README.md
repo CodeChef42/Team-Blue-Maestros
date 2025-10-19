@@ -105,4 +105,5 @@ cd CrisisGuard/agent
 pip install -r requirements.txt
 python agent.py
 ```
+run python file ```detection3.py```
 
