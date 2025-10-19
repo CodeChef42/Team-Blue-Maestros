@@ -1,5 +1,5 @@
 # Team-Blue-Maestros
-Official repository for team blue maestros - Zayed Innovation Hackathon
+Official repository for Team Blue Maestros - Zayed Innovation Hackathon (IH25093)
 
 # 🛡️ CrisisGuard — Local AI-Powered Ransomware Defense
 
