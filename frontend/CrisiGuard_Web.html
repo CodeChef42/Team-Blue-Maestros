@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CrisisGuard – Crisis-Aware AI Ransomware Shield</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="icon" href="logo.png" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #f8fafc;
+      background: url('Background.png') no-repeat center center fixed;
+      background-size: cover;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    .hero {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn {
+      background: #2563eb;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 0.5rem;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .card {
+      background: rgba(30, 41, 59, 0.9);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: 0.3s;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .card:hover {
+      background: rgba(51, 65, 85, 0.95);
+      transform: scale(1.05);
+    }
+
+    .soft-logo {
+      border-radius: 20%;
+    }
+
+    .overview-section {
+      position: relative;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .overview-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('Scam.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.25;
+      z-index: 0;
+    }
+
+    .overview-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .review-scroll {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      padding-bottom: 1rem;
+    }
+
+    .review-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .review-card {
+      background: rgba(30, 41, 59, 0.9);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      flex: 0 0 300px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #reviewForm input, #reviewForm textarea {
+      background-color: #1e293b;
+      border: 1px solid #374151;
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="text-center">
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="logo.png" alt="CrisisGuard Logo" class="mx-auto mb-6 w-28 h-28 soft-logo shadow-lg" />
+    <h1 class="text-4xl font-extrabold mb-4">CrisisGuard</h1>
+    <p class="text-lg max-w-xl mx-auto text-gray-200">
+      Crisis-Aware, AI-Powered Ransomware Prevention.<br />
+      Adaptive defense that strengthens during global crises — keeping your data safe, even in chaos.
+    </p>
+    <div class="mt-8 space-x-4">
+      <a href="#download" class="btn">Download Agent</a>
+      <a href="#download" class="btn bg-gray-600 hover:bg-gray-500">Add to Browser</a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section id="overview" class="overview-section">
+    <div class="overview-content">
+      <h2 class="text-3xl font-bold mb-8">Overview</h2>
+      <div class="max-w-3xl mx-auto text-gray-300 px-6">
+        <p class="mb-4">
+          CrisisGuard is an adaptive, AI-powered ransomware shield that works completely offline — no cloud dependencies or external servers.
+          It monitors your files, processes, and behaviors in real time to detect anomalies before encryption occurs.
+        </p>
+        <p class="mb-4">
+          During global cyber incidents or heightened phishing waves, CrisisGuard automatically enters <b>Crisis Mode</b>,
+          tightening thresholds and increasing backup frequency to ensure maximum resilience.
+        </p>
+        <p>
+          With features like local AI detection, AES-GCM encrypted backups, and dynamic confidence scoring,
+          CrisisGuard empowers users with full control, transparency, and uncompromised data sovereignty.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section id="capabilities" class="bg-gray-800 bg-opacity-90">
+    <h2 class="text-3xl font-bold mb-10">Core Capabilities</h2>
+    <div class="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto">
+      <div class="card">
+        <h3 class="text-xl font-semibold mb-2">Local AI Detection</h3>
+        <p class="text-gray-300 text-sm">Offline, real-time detection of ransomware-like activity without cloud reliance.</p>
+      </div>
+      <div class="card">
+        <h3 class="text-xl font-semibold mb-2">Crisis-Aware Mode</h3>
+        <p class="text-gray-300 text-sm">Auto-hardens security during global threat spikes or active phishing waves.</p>
+      </div>
+      <div class="card">
+        <h3 class="text-xl font-semibold mb-2">Encrypted Backups</h3>
+        <p class="text-gray-300 text-sm">Automatically stores essential files in AES-GCM encrypted local backups.</p>
+      </div>
+      <div class="card">
+        <h3 class="text-xl font-semibold mb-2">Quarantine & Restore</h3>
+        <p class="text-gray-300 text-sm">Instantly isolates infected files and allows seamless restore from backup.</p>
+      </div>
+      <div class="card">
+        <h3 class="text-xl font-semibold mb-2">Visual Dashboard</h3>
+        <p class="text-gray-300 text-sm">Electron-powered desktop dashboard with live logs, alerts, and confidence scoring.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section id="why-it-matters" class="bg-gray-900 bg-opacity-90 flex flex-col md:flex-row items-center justify-center text-left px-8">
+    <img src="Why.png.jpg" alt="Victim of Ransomware" class="w-full md:w-1/3 rounded-lg shadow-lg mb-6 md:mb-0 md:mr-10" />
+    <div class="max-w-2xl">
+      <h2 class="text-3xl font-bold mb-4 text-white">Why It Matters</h2>
+      <p class="text-gray-300 mb-4">
+Ransomware poses a serious and direct risk to individuals and families even though it is generally portrayed through big corporate attacks. To an individual, being a victim means that they will lose access to those digital memories that cannot be replaced such as family photos, personal documents, and financial records, most of which are kept only on a home computer or personal cloud. The force of ransom payment is terrible since, unlike a corporation that can retrieve data from a secure, professionally managed backup, the average individual has little to no reliable, segregated recovery plan. The disparity in preparedness is what gives the criminals the audacity to go after home users, ask for ransoms, and make the attack a very personal and often devastating form of digital theft.      </p>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="bg-gray-900 bg-opacity-80">
+    <h2 class="text-3xl font-bold mb-8">What Users Say</h2>
+    <div id="reviewScroll" class="review-scroll max-w-5xl mx-auto px-8">
+      <div class="review-card">
+        <p class="text-gray-300 mb-2">“Finally, a ransomware solution that doesn’t need the cloud. Feels faster and safer.”</p>
+        <span class="text-yellow-400">★★★★★</span><br />
+        <span class="text-sm text-gray-400">— Alex P.</span>
+      </div>
+      <div class="review-card">
+        <p class="text-gray-300 mb-2">“CrisisGuard actually saved my files from a test encryption attack. Impressive tech.”</p>
+        <span class="text-yellow-400">★★★★★</span><br />
+        <span class="text-sm text-gray-400">— Marina Q.</span>
+      </div>
+      <div class="review-card">
+        <p class="text-gray-300 mb-2">“The adaptive defense feature is a game changer during global events.”</p>
+        <span class="text-yellow-400">★★★★☆</span><br />
+        <span class="text-sm text-gray-400">— Ethan L.</span>
+      </div>
+    </div>
+    <div class="mt-8">
+      <button onclick="openForm()" class="btn">Add Review</button>
+    </div>
+
+    <!-- Review Form Modal -->
+    <div id="reviewForm" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center">
+      <div class="bg-gray-800 rounded-xl p-6 w-96 relative">
+        <h3 class="text-xl font-bold mb-4">Add Your Review</h3>
+        <form id="reviewFormFields" class="space-y-3">
+          <input id="name" type="text" placeholder="Your Name" class="w-full p-2 rounded" required />
+          <input id="email" type="email" placeholder="Email ID" class="w-full p-2 rounded" required />
+          <textarea id="reviewText" placeholder="Your Review" class="w-full p-2 rounded" rows="3" required></textarea>
+          <div class="flex justify-center space-x-1 text-2xl" id="stars">
+            <span class="cursor-pointer text-gray-500">★</span>
+            <span class="cursor-pointer text-gray-500">★</span>
+            <span class="cursor-pointer text-gray-500">★</span>
+            <span class="cursor-pointer text-gray-500">★</span>
+            <span class="cursor-pointer text-gray-500">★</span>
+          </div>
+          <button type="submit" class="btn w-full">Submit Review</button>
+        </form>
+        <button onclick="closeForm()" class="absolute top-2 right-4 text-gray-400 hover:text-white">✖</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 bg-gray-950 text-gray-400">
+    <p class="text-center">CrisisGuard © 2025 | Built for Hackathon</p>
+    <p class="text-sm text-center mt-2">AI + Cybersecurity for safer digital resilience.</p>
+  </footer>
+
+  <script>
+    let selectedStars = 0;
+    const stars = document.querySelectorAll("#stars span");
+    stars.forEach((star, i) => {
+      star.addEventListener("click", () => {
+        selectedStars = i + 1;
+        stars.forEach((s, j) => s.classList.toggle("text-yellow-400", j < selectedStars));
+      });
+    });
+
+    function openForm() {
+      document.getElementById("reviewForm").classList.remove("hidden");
+    }
+    function closeForm() {
+      document.getElementById("reviewForm").classList.add("hidden");
+    }
+
+    document.getElementById("reviewFormFields").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const text = document.getElementById("reviewText").value.trim();
+      if (!name || !text || selectedStars === 0) return alert("Please complete all fields and select stars.");
+
+      const newCard = document.createElement("div");
+      newCard.className = "review-card";
+      newCard.innerHTML = `
+        <p class="text-gray-300 mb-2">“${text}”</p>
+        <span class="text-yellow-400">${"★".repeat(selectedStars)}${"☆".repeat(5 - selectedStars)}</span><br/>
+        <span class="text-sm text-gray-400">— ${name}</span>`;
+      document.getElementById("reviewScroll").appendChild(newCard);
+      closeForm();
+      e.target.reset();
+      selectedStars = 0;
+      stars.forEach(s => s.classList.remove("text-yellow-400"));
+    });
+  </script>
+</body>
+</html>
