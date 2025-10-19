@@ -106,3 +106,11 @@ pip install -r requirements.txt
 python agent.py
 ```
 
+To run:
+Link for the ML Model: https://drive.google.com/file/d/1Z37PGTLurZiD7dsy41_Hn2BlkKPRe7uS/view?usp=sharing
+This is required to run. Download the file and make sure it is running for the system to work.
+
+Run local agent crisisguard_agent_api which is in the backend directory.
+Visit the website which is hosted on vercel: https://pro-link-forge.vercel.app/#home
+Run the backend server which is in the backend folder: ``` python -m uvicorn main:app --reload --port 8080 ```
+
